@@ -24,9 +24,6 @@ p {
     width: 75%;
     margin: auto;
     padding-top: 5px;
-    /*-moz-box-shadow: 10px 10px 5px #888;
-    -webkit-box-shadow: 10px 10px 5px #888;
-    box-shadow: 10px 10px 5px #888;*/
     position: relative;
 }
 .quizcontainer #quiz
@@ -37,12 +34,10 @@ font-family:"Georgia", Arial, sans-serif;
 .nextButton {
     box-shadow: 3px 3px 5px #888;
     border-radius: 6px;
-   /* width: 150px;*/
     height: 40px;
     text-align: center;
-    background-color: lightgrey;
-    /*clear: both;*/
-    color: red;
+    background-color: rgb(255, 251, 1);
+    color: rgb(0, 17, 255);
     font-family:'Gabriola', serif;
     position: relative;
     margin: auto;
@@ -56,11 +51,9 @@ font-family:"Georgia", Arial, sans-serif;
 .preButton {
     box-shadow: 3px 3px 5px #888;
     border-radius: 6px;
-    /*width: 150px;*/
     height: 40px;
     text-align: center;
-    background-color: lightgrey;
-    /*clear: both;*/
+    background-color: rgba(247, 250, 60, 0.932);
     color: red;
     font-family:'Gabriola', serif;
     position: relative;
@@ -80,11 +73,11 @@ font-family:"Georgia", Arial, sans-serif;
     height: auto;
     margin: auto;
     border-radius: 6px;
-    background-color: #f3dc45;
+    background-color: #f1000080;
     text-align: center;
 }
 .quizMessage {
-    background-color: peachpuff;
+    background-color: rgb(247, 115, 0);
     border-radius: 6px;
     width: 20%;
     margin: auto;
@@ -100,7 +93,7 @@ font-family:"Georgia", Arial, sans-serif;
 }
 .choiceList {
     font-family: 'Arial', serif;
-    color: #ed12cd;
+    color: #035c57;
 	font-size:15px;
 	font-weight:bold;
 }
@@ -108,7 +101,7 @@ font-family:"Georgia", Arial, sans-serif;
     width: 40%;
     height: auto;
     border-radius: 6px;
-    background-color: linen;
+    background-color: rgb(18, 157, 221);
     margin: auto;
 	color:green;
     text-align: center;

@@ -68,7 +68,7 @@ $(document).ready(function ()
 			  $(".preButton").attr('disabled', 'disabled');
 			}
 			
-				currentQuestion--; // Since we have already displayed the first question on DOM ready
+				currentQuestion--; 
 				if (currentQuestion < questions.length) 
 				{
 					displayCurrentQuestion();
@@ -171,41 +171,7 @@ function timedCount()
 					
 		}
 		
-		/*if(c == 0 )
-		{	
-			if (!quizOver) 
-			{
-				var val = $("input[type='radio']:checked").val();
-            	if (val == questions[currentQuestion].correctAnswer) 
-				{
-					correctAnswers++;
-				}
-				currentQuestion++; // Since we have already displayed the first question on DOM ready
-				
-				if (currentQuestion < questions.length) 
-				{
-					displayCurrentQuestion();
-					c=15;
-				} 
-				else 
-				{
-					displayScore();
-					$('#timer').html('');
-					c=16;
-					$(document).find(".nextButton").text("Play Again?");
-					quizOver = true;
-					return false;
-				}
-			}
-			else 
-			{ // quiz is over and clicked the next button (which now displays 'Play Again?'
-				quizOver = false;
-				$(document).find(".nextButton").text("Next Question");
-				resetQuiz();
-				displayCurrentQuestion();
-				hideScore();
-			}		
-		}	*/
+		
 		c = c - 1;
 		t = setTimeout(function()
 		{
@@ -224,9 +190,9 @@ function displayCurrentQuestion()
     var questionClass = $(document).find(".quizContainer > .question");
     var choiceList = $(document).find(".quizContainer > .choiceList");
     var numChoices = questions[currentQuestion].choices.length;
-    // Set the questionClass text to the current question
+    
     $(questionClass).text(question);
-    // Remove all current <li> elements (if any)
+
     $(choiceList).find("li").remove();
     var choice;
 	
@@ -273,9 +239,9 @@ function viewResults()
     var questionClass = $(document).find(".quizContainer > .question");
     var choiceList = $(document).find(".quizContainer > .choiceList");
     var numChoices = questions[currentQuestion].choices.length;
-    // Set the questionClass text to the current question
+    
     $(questionClass).text(question);
-    // Remove all current <li> elements (if any)
+    
     $(choiceList).find("li").remove();
     var choice;
 	
