@@ -87,7 +87,7 @@ font-family:"Georgia", Arial, sans-serif;
 	font-weight:bold;
     font-family:'Gabriola', serif;
     color: red;
-	position: absolute;
+	position: fixed;
 	top:80%;
 	left:40%;
 }
@@ -108,7 +108,7 @@ font-family:"Georgia", Arial, sans-serif;
 	font-size:25px;
     font-family:'Verdana', serif;
 	font-weight: bold;
-	position: relative;
+	position: fixed;
 	top:80%;
 	left:30%;
 }
