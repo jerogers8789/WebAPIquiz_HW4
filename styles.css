@@ -19,7 +19,7 @@ p {
 }
 /* Quiz Classes */
  .quizContainer {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.397);
     border-radius: 6px;
     width: 75%;
     margin: auto;
@@ -42,9 +42,9 @@ font-family:"Georgia", Arial, sans-serif;
     position: relative;
     margin: auto;
 	font-size:25px;
-	font-weight:bold;
+	font-weight: bold;
     padding-top: 5px;
-	float:right;
+	float: right;
 	right:30%;
 }
 
@@ -59,16 +59,16 @@ font-family:"Georgia", Arial, sans-serif;
     position: relative;
     margin: auto;
 	font-size:25px;
-	font-weight:bold;
+	font-weight: bold;
     padding-top: 5px;
-	float:left;
+	float: left;
 	left:30%;
 }
 
 .question {
     font-family:'Century', serif;
     font-size: 1.5em;
-	font-weight:bold;
+	font-weight: bold;
     width: 100%;
     height: auto;
     margin: auto;
@@ -87,7 +87,7 @@ font-family:"Georgia", Arial, sans-serif;
 	font-weight:bold;
     font-family:'Gabriola', serif;
     color: red;
-	position:absolute;
+	position: absolute;
 	top:80%;
 	left:40%;
 }
@@ -95,7 +95,7 @@ font-family:"Georgia", Arial, sans-serif;
     font-family: 'Arial', serif;
     color: #035c57;
 	font-size:15px;
-	font-weight:bold;
+	font-weight: bold;
 }
 .result {
     width: 40%;
@@ -103,12 +103,12 @@ font-family:"Georgia", Arial, sans-serif;
     border-radius: 6px;
     background-color: rgb(18, 157, 221);
     margin: auto;
-	color:green;
+	color: green;
     text-align: center;
 	font-size:25px;
     font-family:'Verdana', serif;
-	font-weight:bold;
-	position:absolute;
+	font-weight: bold;
+	position: relative;
 	top:80%;
 	left:30%;
 }
