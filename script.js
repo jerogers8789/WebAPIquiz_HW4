@@ -77,7 +77,7 @@ $(document).ready(function ()
 		} else {
 			if(viewingAns == 3) { return false; }
 			currentQuestion = 0; viewingAns = 3;
-			viewResults();		
+			viewResults();		ß
 		}
     });
 
@@ -97,7 +97,6 @@ $(document).ready(function ()
             } 
 			else 
 			{
-                // TODO: Remove any message -> not sure if this is efficient to call this each time....
                 $(document).find(".quizMessage").hide();
 				if (val == questions[currentQuestion].correctAnswer) 
 				{
@@ -105,7 +104,7 @@ $(document).ready(function ()
 				}
 				iSelectedAnswer[currentQuestion] = val;
 				
-				currentQuestion++; // Since we have already displayed the first question on DOM ready
+				currentQuestion++;
 				if(currentQuestion >= 1) {
 					  $('.preButton').prop("disabled", false);
 				}
