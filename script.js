@@ -40,7 +40,7 @@ var questions = [{
     correctAnswer: 0
 }];
 
-
+var wrngAnswr = 10
 var currentQuestion = 0;
 var viewingAns = 0;
 var correctAnswers = 0;
@@ -101,7 +101,14 @@ $(document).ready(function ()
 				if (val == questions[currentQuestion].correctAnswer) 
 				{
 					correctAnswers++;
+					
 				}
+				else {
+					wrngAnswr--;
+					
+					console.log(wrngAnswr)
+				}
+			
 				iSelectedAnswer[currentQuestion] = val;
 				
 				currentQuestion++;
@@ -161,7 +168,7 @@ function timedCount()
 		{
 					displayScore();
 					$('#iTimeShow').html('Quiz Time Completed!');
-					$('#timer').html("You scored: " + correctAnswers + " out of: " + questions.length);
+					$('#timer').html("You scored: " + correctAnswers + " out of " + questions.length);
 					c=185;
 					$(document).find(".preButton").text("View Answer");
 					$(document).find(".nextButton").text("Play Again?");
@@ -171,13 +178,17 @@ function timedCount()
 		}
 		
 		
+		
 		c = c - 1;
+		if (wrngAnswr--) {
+			c = c - 10;
+		}
 		t = setTimeout(function()
 		{
 			timedCount()
 		},1000);
 	}
-	
+
 	
 // This displays the current question AND the choices
 function displayCurrentQuestion() 
@@ -211,7 +222,8 @@ function displayCurrentQuestion()
 function resetQuiz()
 {
     currentQuestion = 0;
-    correctAnswers = 0;
+	correctAnswers = 0;
+	wrngAnswr = 10;
     hideScore();
 }
 
@@ -270,5 +282,7 @@ function viewResults()
 		{
 			viewResults();
 		},3000);
+
+	
 
 }
