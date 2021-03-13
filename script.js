@@ -24,6 +24,7 @@ var questions = [{
     correctAnswer: 3
 }];
 
+var wrngAnswr = 6
 var currentQuestion = 0;
 var viewingAns = 0;
 var correctAnswers = 0;
@@ -36,12 +37,11 @@ $(document).ready(function () {
     displayCurrentQuestion();
     $(this).find(".quizMessage").hide();
 	$(this).find('#preBtn').hide();
-	//(".preButton").attr('disabled', 'disabled');
 	
 	timedCount();
 	
 	$(this).find(".preButton").on("click", function () {		
-        if (!quizOver) {
+    	if (!quizOver) {
 			if(currentQuestion == 0) { return false; }
 	
 			if(currentQuestion == 1) {
@@ -55,31 +55,26 @@ $(document).ready(function () {
 		} else {
 			if(viewingAns == 3) { return false; }
 			currentQuestion = 0; viewingAns = 3;
-			viewResults();		
+			viewResults();		ß
 		}
 });
-
-	
-	
-    $(this).find(".nextButton").on("click", function () 
+ $(this).find(".nextButton").on("click", function () 
 	{
-        if (!quizOver) 
+		 if (!quizOver) 
 		{
-			
-            var val = $("input[type='radio']:checked").val();
-
-            if (val == undefined) 
+			var val = $("input[type='radio']:checked").val();
+			 if (val == undefined) 
 			{
                 $(document).find(".quizMessage").text("Please select an answer");
                 $(document).find(".quizMessage").show();
             } 
 			else 
 			{
-                
                 $(document).find(".quizMessage").hide();
 				if (val == questions[currentQuestion].correctAnswer) 
 				{
 					correctAnswers++;
+					
 				}
 				if (val != questions[currentQuestion].correctAnswer) {
 					wrongAnswer();
@@ -87,6 +82,10 @@ $(document).ready(function () {
 				iSelectedAnswer[currentQuestion] = val;
 				
 				currentQuestion++; 
+			
+				iSelectedAnswer[currentQuestion] = val;
+				
+				currentQuestion++;
 				if(currentQuestion >= 1) {
 					  $('.preButton').prop("disabled", false);
 				}
@@ -104,11 +103,9 @@ $(document).ready(function () {
 					$(document).find(".preButton").text("View Answer");
 					$(document).find(".nextButton").text("Play Again?");
 					quizOver = true;
-					return false;
-					
+					return false;					
 				}
-			}
-					
+			}					
 		}	
 		else 
 		{
@@ -130,7 +127,6 @@ function wrongAnswer() {
 }
 
 function timedCount() {
-	// var hours = parseInt( c / 3600 ) % 24;
 	var minutes = parseInt( c / 60 ) % 60;
 	var seconds = c % 60;
 	var result = (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds  < 10 ? "0" + seconds : seconds);            
@@ -145,8 +141,7 @@ function timedCount() {
 		$(document).find(".nextButton").text("Play Again?");
 		quizOver = true;
 		return false;
-	}
-		
+	}	
 	c = c - 1;
 	t = setTimeout(function() {
 		timedCount()
@@ -166,12 +161,9 @@ function displayCurrentQuestion()
 
     $(choiceList).find("li").remove();
     var choice;
-	
-	
     for (i = 0; i < numChoices; i++) 
 	{
-        choice = questions[currentQuestion].choices[i];
-		
+        choice = questions[currentQuestion].choices[i];		
 		if(iSelectedAnswer[currentQuestion] == i) {
 			$('<li><input type="radio" class="radio-inline" checked="checked"  value=' + i + ' name="dynradio" />' +  ' ' + choice  + '</li>').appendTo(choiceList);
 		} else {
@@ -183,7 +175,8 @@ function displayCurrentQuestion()
 function resetQuiz()
 {
     currentQuestion = 0;
-    correctAnswers = 0;
+	correctAnswers = 0;
+	wrngAnswr = 10;
     hideScore();
 }
 
@@ -200,7 +193,6 @@ function hideScore()
 
 function viewResults() 
 {
-
 	if(currentQuestion == 10) { currentQuestion = 0;return false; }
 	if(viewingAns == 1) { return false; }
 
@@ -214,7 +206,6 @@ function viewResults()
     
     $(choiceList).find("li").remove();
     var choice;
-	
 	
 	for (i = 0; i < numChoices; i++) 
 	{
