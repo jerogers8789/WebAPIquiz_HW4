@@ -41,13 +41,11 @@ $(document).ready(function () {
 	timedCount();
 	
 	$(this).find(".preButton").on("click", function () {		
-    	if (!quizOver) {
-			if(currentQuestion == 0) { return false; }
-	
+    if (!quizOver) {
+		if(currentQuestion == 0) { return false; }
 			if(currentQuestion == 1) {
 			  $("#preBtn").hide();
-			}
-			
+			}	
 			currentQuestion--; 
 			if (currentQuestion < questions.length) {
 				displayCurrentQuestion();
@@ -60,63 +58,51 @@ $(document).ready(function () {
 });
  $(this).find(".nextButton").on("click", function () 
 	{
-		 if (!quizOver) 
+		if (!quizOver) {
+		var val = $("input[type='radio']:checked").val();
+		 if (val == undefined) {
+            $(document).find(".quizMessage").text("Please select an answer");
+            $(document).find(".quizMessage").show();
+        } 
+		else {
+        $(document).find(".quizMessage").hide();
+		if (val == questions[currentQuestion].correctAnswer) 
 		{
-			var val = $("input[type='radio']:checked").val();
-			 if (val == undefined) 
-			{
-                $(document).find(".quizMessage").text("Please select an answer");
-                $(document).find(".quizMessage").show();
-            } 
-			else 
-			{
-                $(document).find(".quizMessage").hide();
-				if (val == questions[currentQuestion].correctAnswer) 
-				{
-					correctAnswers++;
-					
-				}
-				if (val != questions[currentQuestion].correctAnswer) {
-					wrongAnswer();
-				}
-				iSelectedAnswer[currentQuestion] = val;
-				
-				currentQuestion++; 
-			
-				iSelectedAnswer[currentQuestion] = val;
-				
-				currentQuestion++;
-				if(currentQuestion >= 1) {
-					  $('.preButton').prop("disabled", false);
-				}
-				if (currentQuestion < questions.length) 
-				{
-					displayCurrentQuestion();
-					
-				} 
-				else 
-				{
-					displayScore();
-					$('#iTimeShow').html('Quiz Time Completed!');
-					$('#timer').html("You scored: " + correctAnswers + " out of: " + questions.length);
-					c=185;
-					$(document).find(".preButton").text("View Answer");
-					$(document).find(".nextButton").text("Play Again?");
-					quizOver = true;
-					return false;					
+		correctAnswers++;		
+		}
+		if (val != questions[currentQuestion].correctAnswer) {
+			wrongAnswer();
+		}
+		iSelectedAnswer[currentQuestion] = val;	
+			currentQuestion++; 
+			iSelectedAnswer[currentQuestion] = val;	
+			currentQuestion++;
+			if(currentQuestion >= 1) {
+			  $('.preButton').prop("disabled", false);
+			}
+			if (currentQuestion < questions.length) {
+			displayCurrentQuestion();} 
+				else {
+				displayScore();
+				$('#iTimeShow').html('Quiz Time Completed!');
+				$('#timer').html("You scored: " + correctAnswers + " out of: " + questions.length);
+				c=90;
+				$(document).find(".preButton").text("View Answer");
+				$(document).find(".nextButton").text("Play Again?");
+				quizOver = true;
+				return false;					
 				}
 			}					
 		}	
-		else 
-		{
-			quizOver = false; $('#iTimeShow').html('Time Remaining:'); iSelectedAnswer = [];
-			$(document).find(".nextButton").text("Next Question");
-			$(document).find(".preButton").text("Previous Question");
-			 $(".preButton").attr('disabled', 'disabled');
-			resetQuiz();
-			viewingAns = 1;
-			displayCurrentQuestion();
-			hideScore();
+		else {
+		quizOver = false; $('#iTimeShow').html('Time Remaining:'); iSelectedAnswer = [];
+		$(document).find(".nextButton").text("Next Question");
+		$(document).find(".preButton").text("Previous Question");
+		 $(".preButton").attr('disabled', 'disabled');
+		resetQuiz();
+		viewingAns = 1;
+		displayCurrentQuestion();
+		hideScore();
 		}
     });
 });
@@ -148,9 +134,7 @@ function timedCount() {
 	},1000);
 }	
 	
-function displayCurrentQuestion() 
-{
-
+function displayCurrentQuestion() {
 	if(c == 90) { c = 90; timedCount(); }
     var question = questions[currentQuestion].question;
     var questionClass = $(document).find(".quizContainer > .question");
@@ -158,41 +142,34 @@ function displayCurrentQuestion()
     var numChoices = questions[currentQuestion].choices.length;
     
     $(questionClass).text(question);
-
     $(choiceList).find("li").remove();
     var choice;
-    for (i = 0; i < numChoices; i++) 
-	{
-        choice = questions[currentQuestion].choices[i];		
-		if(iSelectedAnswer[currentQuestion] == i) {
-			$('<li><input type="radio" class="radio-inline" checked="checked"  value=' + i + ' name="dynradio" />' +  ' ' + choice  + '</li>').appendTo(choiceList);
-		} else {
-			$('<li><input type="radio" class="radio-inline" value=' + i + ' name="dynradio" />' +  ' ' + choice  + '</li>').appendTo(choiceList);
-		}
-    }
+    for (i = 0; i < numChoices; i++) {
+     choice = questions[currentQuestion].choices[i];		
+	 if(iSelectedAnswer[currentQuestion] == i) {
+		$('<li><input type="radio" class="radio-inline" checked="checked"  value=' + i + ' name="dynradio" />' +  ' ' + choice  + '</li>').appendTo(choiceList);
+	} else {
+		$('<li><input type="radio" class="radio-inline" value=' + i + ' name="dynradio" />' +  ' ' + choice  + '</li>').appendTo(choiceList);
+	}}
 }
 
-function resetQuiz()
-{
+function resetQuiz(){
     currentQuestion = 0;
 	correctAnswers = 0;
-	wrngAnswr = 10;
+	wrngAnswr = 6;
     hideScore();
 }
 
-function displayScore()
-{
+function displayScore(){
     $(document).find(".quizContainer > .result").text("You scored: " + correctAnswers + " out of: " + questions.length);
     $(document).find(".quizContainer > .result").show();
 }
 
-function hideScore() 
-{
+function hideScore() {
     $(document).find(".result").hide();
 }
 
-function viewResults() 
-{
+function viewResults() {
 	if(currentQuestion == 10) { currentQuestion = 0;return false; }
 	if(viewingAns == 1) { return false; }
 
@@ -207,8 +184,7 @@ function viewResults()
     $(choiceList).find("li").remove();
     var choice;
 	
-	for (i = 0; i < numChoices; i++) 
-	{
+	for (i = 0; i < numChoices; i++) {
         choice = questions[currentQuestion].choices[i];
 		
 		if(iSelectedAnswer[currentQuestion] == i) {
@@ -228,8 +204,7 @@ function viewResults()
 	
 	currentQuestion++;
 	
-	setTimeout(function()
-		{
-			viewResults();
-		},3000);
+	setTimeout(function(){
+		viewResults();
+	},3000);
 }
